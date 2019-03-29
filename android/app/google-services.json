@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "346935712477",
+    "firebase_url": "https://agriwaste-iit.firebaseio.com",
+    "project_id": "agriwaste-iit",
+    "storage_bucket": "agriwaste-iit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346935712477:android:fad34fe072922ca1",
+        "android_client_info": {
+          "package_name": "com.agriwaste.agriwaste"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346935712477-nudl3slqreadaj07bu07m5ueoadrdv6g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.agriwaste.agriwaste",
+            "certificate_hash": "01be66a13d1091aed59f5f9c642b47a3a02cf1e8"
+          }
+        },
+        {
+          "client_id": "346935712477-ocijb3rddlnckv9g6jlfnpot7jajgjub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcZGPdrYWB1-ad5spxzIzgYSW8XRPhKOY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346935712477-ocijb3rddlnckv9g6jlfnpot7jajgjub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
