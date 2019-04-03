@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:agriwaste/OnSubmitForm.dart';
-import 'package:card_settings/card_settings.dart';
 import 'package:intl/intl.dart';
-import 'main.dart';
 Item savitem;
-User curruser;
 DatabaseReference itemRef;
 class NewRequest extends StatefulWidget {
   @override
@@ -26,7 +22,7 @@ class NewRequestState extends State<NewRequest>{
   @override
   void initState() {
     super.initState();
-    item = Item("", "","","","","","","","","","");
+    item = Item("", "","","","","","","","","","","");
     final FirebaseDatabase database = FirebaseDatabase.instance; //Rather then just writing FirebaseDatabase(), get the instance.
     itemRef = database.reference().child('items');
     itemRef.onChildAdded.listen(_onEntryAdded);
@@ -53,12 +49,12 @@ print(item.Mobile+'1');
     Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new handlesubmit(item: item)));
 
   }
-
-  String Name;
-  String Address;
-  String CropType;
-  String LandSize;
-  String Mobile;
+//
+//  String Name;
+//  String Address;
+//  String CropType;
+//  String LandSize;
+//  String Mobile;
 
   String _validateName(String value){
     if(value.isEmpty) return'Filled is requried.';
@@ -447,8 +443,8 @@ class Item {
   String DMobile='0';
   String TrackStatus='0';
 
-  Item(this.Name, this.Mobile, this.Address, this.CropType, this.HarvestDate,
-      this.LandSize,this.Donations,this.Pincode,this.DMobile,this.DName,this.TrackStatus);
+  Item(this.key,this.Name, this.Mobile, this.Address, this.HarvestDate, this.CropType,
+      this.LandSize,this.Donations,this.Pincode,this.DName,this.DMobile,this.TrackStatus);
 
   Item.fromSnapshot(DataSnapshot snapshot)
       : key = snapshot.key,
@@ -466,14 +462,14 @@ class Item {
   ;
 
 }
-class User {
-  String key=null;
-  String Name=null;
-  String Mobile=null;
-  String Address=null;
-  String Pincode=null;
-
-  User(this.Name, this.Mobile, this.Address, this.Pincode,this.key);
-
-}
-
+//class User {
+//  String key=null;
+//  String Name=null;
+//  String Mobile=null;
+//  String Address=null;
+//  String Pincode=null;
+//
+//  User(this.Name, this.Mobile, this.Address, this.Pincode,this.key);
+//
+//}
+//

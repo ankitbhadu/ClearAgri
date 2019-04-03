@@ -11,7 +11,8 @@ void SubmitFormData(){
   FirebaseDatabase.instance.setPersistenceEnabled(true);
   FirebaseDatabase.instance.setPersistenceCacheSizeBytes(10000000);
   if(cnf){
-    FirebaseDatabase.instance.reference().child('book').child(savitem.Mobile).child(savitem.CropType).set(
+    FirebaseDatabase.instance.reference().child('book').child(savitem.Mobile).push().set(
+
         {
       'Name': savitem.Name,
       'LandSize': savitem.LandSize,
@@ -19,11 +20,16 @@ void SubmitFormData(){
       'Address':savitem.Address,
       'Mobile':savitem.Mobile,
       'CropType':savitem.CropType,
-          'DName':savitem.DName,
-          'DMobile':savitem.DMobile,
-          'TrackStatus':savitem.TrackStatus,
+          'DName':"",
+          'DMobile':"",
+          'TrackStatus':"0",
+          'Pincode':savitem.Pincode,
+          'key':FirebaseDatabase.instance.reference().child('book').child(savitem.Mobile).push().key,
+          'Donations':savitem.Donations
 
-    });}
+    }
+    );
+}
 }
 class AfterOTPVerification extends StatefulWidget {
   @override
