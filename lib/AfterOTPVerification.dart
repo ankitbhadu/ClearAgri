@@ -3,6 +3,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'NewRequest.dart';
 import 'OnSubmitForm.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:agriwaste/MyRequests.dart';
 FirebaseDatabase database = new FirebaseDatabase();
 
 void SubmitFormData(){
@@ -10,6 +12,7 @@ void SubmitFormData(){
   print(savitem.Name+'Jai Mata DI');
   FirebaseDatabase.instance.setPersistenceEnabled(true);
   FirebaseDatabase.instance.setPersistenceCacheSizeBytes(10000000);
+
   if(cnf){
     FirebaseDatabase.instance.reference().child('book').child(savitem.Mobile).push().set(
 
@@ -37,6 +40,17 @@ class AfterOTPVerification extends StatefulWidget {
 }
 
 class _AfterOTPVerificationState extends State<AfterOTPVerification> {
+
+
+//  _savmobileno() async {
+//    SharedPreferences prefs = await SharedPreferences.getInstance();
+//    setState(() {
+//      _mobile = (prefs.getString('savitem.Mobile') ?? 0);
+//      prefs.setInt('savitem.Mobile', mobile);
+//    });
+//  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +119,7 @@ class _AfterOTPVerificationState extends State<AfterOTPVerification> {
               clipBehavior: Clip.antiAlias,
               elevation: 0.0,
               color: Colors.grey.shade300,
-              child: RaisedButton(onPressed:(){Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new MyRequestsDisplay()));}
+              child: RaisedButton(onPressed:(){Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>new MyRequestsDisplay()));}
                   ,child: Text('Add New Request')
               ),
             )

@@ -90,7 +90,7 @@ class _AppState extends State<App> {
 
     new HomePage(),
     new NewRequest(),
-    new MyRequestsDisplay(),
+    new NumCheck(),
     ProfileOnePage(),
 
 

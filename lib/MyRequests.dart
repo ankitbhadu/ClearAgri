@@ -1,8 +1,62 @@
+import 'dart:async';
+
 import 'NewRequest.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'trackdriver.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'EnterPhone.dart';
+
+
+class NumCheck extends StatefulWidget {
+  @override
+  _NumCheckState createState() => _NumCheckState();
+}
+
+class _NumCheckState extends State<NumCheck> {
+
+  Future checkmobile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String mobile = (prefs.getString('savitem.Mobile') ?? "");
+
+    if (mobile == "") {
+
+      Navigator.of(context).push(new MaterialPageRoute(
+          builder: (context) => new EnterPhone()));
+    } else {
+      prefs.setString('mobile', savitem.Mobile);
+      MyRequestsDisplay();
+    }
+  }
+  @override
+  void initState() {
+    super.initState();
+    new Timer(new Duration(milliseconds: 200), () {
+      checkmobile();
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: new Center(
+        child: new Icon(Icons.watch_later),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 class MyRequestsDisplay extends StatefulWidget {
   @override
   _MyRequestsDisplayState createState() => _MyRequestsDisplayState();
@@ -209,61 +263,3 @@ class _MyRequestsDisplayState extends State<MyRequestsDisplay> {
 
 
 
-
-
-//import 'package:agriwaste/NewRequest.dart';
-//import 'package:flutter/material.dart';
-//import 'package:firebase_database/firebase_database.dart';
-////database referense.
-//var MyRequests = FirebaseDatabase.instance
-//    .reference()
-//    .child('book').child('7000588523')
-//    .orderByChild('HarvestDate')as Map<String, dynamic>;
-////Now you can use stream builder to get the data.
-//class MyRequestsDisplay extends StatefulWidget {
-//  @override
-//  _MyRequestsDisplayState createState() => _MyRequestsDisplayState();
-//}
-//
-//class _MyRequestsDisplayState extends State<MyRequestsDisplay> {
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return StreamBuilder(
-//      builder: (context, snap) {
-//        if (snap.hasData && !snap.hasError && snap.data.snapshot.value!=null) {
-//
-////taking the data snapshot.
-//          DataSnapshot snapshot = snap.data.snapshot;
-//          List item=[];
-//          List _list=[];
-////it gives all the documents in this list.
-//          _list=snapshot.value;
-////Now we're just checking if document is not null then add it to another list called "item".
-////I faced this problem it works fine without null check until you remove a document and then your stream reads data including the removed one with a null value(if you have some better approach let me know).
-//          _list.forEach((f){
-//            if(f!=null){
-//              item.add(f);
-//            }
-//          }
-//          );
-//          return snap.data.snapshot.value == null
-////return sizedbox if there's nothing in database.
-//              ? SizedBox()
-////otherwise return a list of widgets.
-//              : ListView.builder(
-//            scrollDirection: Axis.horizontal,
-//            itemCount: item.length,
-//            itemBuilder: (context, index) {
-//              return Card(
-//                 child: new Text (item[index]['HarvestDate'])
-//              );
-//            },
-//          );
-//        } else {
-//          return   Center(child: CircularProgressIndicator());
-//        }
-//      },
-//    );
-//  }
-//}
