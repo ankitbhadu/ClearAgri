@@ -14,12 +14,12 @@ void SubmitFormData(){
     FirebaseDatabase.instance.reference().child('book').child(savitem.Mobile).push().set(
 
         {
-      'Name': savitem.Name,
-      'LandSize': savitem.LandSize,
-      'HarvestDate': savitem.HarvestDate,
-      'Address':savitem.Address,
-      'Mobile':savitem.Mobile,
-      'CropType':savitem.CropType,
+          'Name': savitem.Name,
+          'LandSize': savitem.LandSize,
+          'HarvestDate': savitem.HarvestDate,
+          'Address':savitem.Address,
+          'Mobile':savitem.Mobile,
+          'CropType':savitem.CropType,
           'DName':"",
           'DMobile':"",
           'TrackStatus':"0",
@@ -27,9 +27,9 @@ void SubmitFormData(){
           'key':FirebaseDatabase.instance.reference().child('book').child(savitem.Mobile).push().key,
           'Donations':savitem.Donations
 
-    }
+        }
     );
-}
+  }
 }
 class AfterOTPVerification extends StatefulWidget {
   @override
@@ -41,29 +41,29 @@ class _AfterOTPVerificationState extends State<AfterOTPVerification> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Center(
+        body:Center(
           child: SingleChildScrollView(
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          successTicket(),
-        SizedBox(
-          height: 10.0,
-        ),
-        FloatingActionButton(
-          backgroundColor: Colors.black,
-          child: Icon(
-            Icons.clear,
-            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                successTicket(),
+                SizedBox(
+                  height: 10.0,
+                ),
+                FloatingActionButton(
+                  backgroundColor: Colors.black,
+                  child: Icon(
+                    Icons.clear,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new NewRequest()));
+                  },
+                )
+              ],
+            ),
           ),
-          onPressed: () {
-            Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new NewRequest()));
-          },
         )
-        ],
-      ),
-    ),
-    )
     );
 
   }
@@ -106,7 +106,7 @@ class _AfterOTPVerificationState extends State<AfterOTPVerification> {
               elevation: 0.0,
               color: Colors.grey.shade300,
               child: RaisedButton(onPressed:(){Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new MyRequestsDisplay()));}
-              ,child: Text('Add New Request')
+                  ,child: Text('Add New Request')
               ),
             )
           ],

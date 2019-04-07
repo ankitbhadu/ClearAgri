@@ -59,12 +59,12 @@ class _MyRequestsDisplay2State extends State<MyRequestsDisplay2> {
 //
 //        ));
 //      }
-      setState(() {
-        print('Length: ${widget.allRequests.length}');
+    setState(() {
+      print('Length: ${widget.allRequests.length}');
 
-      });
+    });
 
-    }
+  }
 
   @override
   Widget build(BuildContext context) {

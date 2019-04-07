@@ -45,7 +45,7 @@ class NewRequestState extends State<NewRequest>{
   }
   void otpnumberpasser(Item item){
 
-print(item.Mobile+'1');
+    print(item.Mobile+'1');
     Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new handlesubmit(item: item)));
 
   }
@@ -71,10 +71,10 @@ print(item.Mobile+'1');
     initialDate = (initialDate.year <= 2022 && initialDate.isAfter(now) ? initialDate : now);
 
     var result = await showDatePicker(
-        context: context,
-        initialDate: initialDate,
-        firstDate: new DateTime(2018),
-        lastDate: new DateTime(2022), );
+      context: context,
+      initialDate: initialDate,
+      firstDate: new DateTime(2018),
+      lastDate: new DateTime(2022), );
 
     if (result == null) return;
 
@@ -107,7 +107,7 @@ print(item.Mobile+'1');
             height: 1000,
             child: Card(
               elevation: 4,
-                margin: EdgeInsets.all(16),
+              margin: EdgeInsets.all(16),
               child: new ListView(
                 reverse: false,
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
