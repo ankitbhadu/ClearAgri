@@ -10,7 +10,7 @@ class MyRequestsDisplay extends StatefulWidget {
 
 class _MyRequestsDisplayState extends State<MyRequestsDisplay> {
   List<Item> allRequests = [];
-List<MaterialColor> color = [Colors.yellow,Colors.lightBlue,Colors.teal,Colors.green];
+
   final Color accentColor = Color(0XFFFA2B0F);
   double width2;
   double height2;
@@ -59,7 +59,8 @@ List<MaterialColor> color = [Colors.yellow,Colors.lightBlue,Colors.teal,Colors.g
     width2=width;
     height2=height;
     // TODO: implement build
-    return allRequests.length==0?new Text('No requests made',style: TextStyle(color: Colors.white,)):UI(allRequests, width, height);
+    return allRequests.length==0?new Text('No requests made',style: TextStyle(color: Colors.white,)):
+    UI(allRequests, width, height);
 
 //      new ListView.builder(
 //        itemCount: allRequests.length,
@@ -74,21 +75,19 @@ List<MaterialColor> color = [Colors.yellow,Colors.lightBlue,Colors.teal,Colors.g
   }
   Widget UI(List<Item> alldata,double width,double height)
   {
-    return new Scaffold(
-      body: Material(
-        child: new Card(child: new Container(
-          margin: EdgeInsets.only(top: 16),
-          child: Stack(
-            children: <Widget>[
-              Align(
-                  alignment: Alignment.bottomCenter,
-                  child: _buildBottomCard(width, height)
-              ),
-              _buildCardsList(alldata),
+    return Scaffold(
+      body: new Container(
+        margin: EdgeInsets.only(top: 16),
+        child: Stack(
+          children: <Widget>[
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: _buildBottomCard(width, height)
+            ),
+            _buildCardsList(alldata),
 
-            ],
-          ),
-        ),),
+          ],
+        ),
       ),
     );
   }
@@ -115,10 +114,10 @@ List<MaterialColor> color = [Colors.yellow,Colors.lightBlue,Colors.teal,Colors.g
     String orderid1=item.key;
     String title1=item.CropType;
     return
-      Container(color: color[int.parse(item.TrackStatus)],
+      Container(
           child: new Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              new Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              new Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   new Text("Order Date - $date1",
                     style: TextStyle(
@@ -126,7 +125,7 @@ List<MaterialColor> color = [Colors.yellow,Colors.lightBlue,Colors.teal,Colors.g
                         fontWeight: FontWeight.bold
                     ),
                   ),
-                  new Text("Order ID- $orderid1",overflow: TextOverflow.ellipsis,
+                  new Text("Order ID- $orderid1",
                     style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.bold

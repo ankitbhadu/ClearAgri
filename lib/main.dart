@@ -1,3 +1,4 @@
+
 import 'package:agriwaste/MyRequests.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
@@ -5,9 +6,11 @@ import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'NewRequest.dart';
 import 'homepage.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-//import 'carousel.dart';
+import 'carousel.dart';
+import 'drawer.dart';
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:agriwaste/InfoPage/infopage.dart';
 int firsttime=1;
 void main(){
   runApp(new MaterialApp(
@@ -18,17 +21,17 @@ void main(){
 //      // Set routes for using the Navigator.
 //      '/NewRequest': (BuildContext context) => new NewRequest(),
 //    },
-//      theme: ThemeData(
-//        accentColor: Colors.indigo[400], // used for card headers
-//        cardColor: Colors.white, // used for field backgrounds
-//        backgroundColor: Colors.indigo[100], // color outside the card
-//        primaryColor: Colors.teal, // color of page header
-//        buttonColor: Colors.lightBlueAccent[100], // background color of buttons
-//        textTheme: TextTheme(
-//          button: TextStyle(color: Colors.deepPurple[900]), // style of button text
-//          subhead: TextStyle(color: Colors.deepOrange[900]), // style of input text
-//        ),
-//      )
+      theme: ThemeData(
+        accentColor: Colors.indigo[400], // used for card headers
+        cardColor: Colors.white, // used for field backgrounds
+        backgroundColor: Colors.indigo[100], // color outside the card
+        primaryColor: Colors.teal, // color of page header
+        buttonColor: Colors.lightBlueAccent[100], // background color of buttons
+        textTheme: TextTheme(
+          button: TextStyle(color: Colors.deepPurple[900]), // style of button text
+          subhead: TextStyle(color: Colors.deepOrange[900]), // style of input text
+        ),
+      )
   )
   );
 }
@@ -41,7 +44,6 @@ class HomeCheck extends StatefulWidget {
 class HomeCheckState extends State<HomeCheck> {
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-//    SharedPreferences Fire
     bool _seen = (prefs.getBool('seen') ?? false);
 
     if (_seen) {
@@ -66,9 +68,7 @@ class HomeCheckState extends State<HomeCheck> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Center(
-        child: new Container(
-        child:new Image(image: AssetImage('assets/agri.png'),fit: BoxFit.fitWidth,)
-        )
+        child: new Icon(Icons.watch_later),
       ),
     );
   }
@@ -87,22 +87,27 @@ class _AppState extends State<App> {
 
   int _selectedIndex = 0;
   final _widgetOptions = [
-    HomePage(),
-    NewRequest(),
-    MyRequestsDisplay(),
+
+    new HomePage(),
+    new NewRequest(),
+    new MyRequestsDisplay(),
+    ProfileOnePage(),
+
+
   ];
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Center(child: new Text('ClearAGri',style: TextStyle(fontFamily:'joker'),),),),
-      drawer: Drawer(),
+      appBar: new AppBar(title: new Center(child: new Text('Homepage'),),),
+      drawer: NewDrawer(),
       bottomNavigationBar: FancyBottomNavigation(
 
         tabs: [
           TabData(iconData: Icons.home, title: "Home"),
-          TabData(iconData: Icons.send, title: "Request"),
-          TabData(iconData: Icons.shopping_cart, title: "MyRequests")
+          TabData(iconData: Icons.launch, title: "Request"),
+          TabData(iconData: Icons.history, title: "Track"),
+          TabData(iconData: Icons.info, title: "Info")
         ],
         onTabChangedListener: (position) {
           setState(() {
@@ -207,6 +212,5 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ); //Material App
   }
 }
-
 
 

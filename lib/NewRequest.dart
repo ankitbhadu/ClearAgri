@@ -99,127 +99,129 @@ class NewRequestState extends State<NewRequest>{
   TimeOfDay time;
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Material(
-        child:SingleChildScrollView(
-          child: Container(
-            height: 1000,
-            child: Card(
-              elevation: 4,
-              margin: EdgeInsets.all(16),
-              child: new ListView(
-                reverse: false,
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                children: <Widget>[
+    return Stack(
+      children: <Widget>[
+        Container(
+          child: Form(
+            key: _formKey,
+            child: Material(
+              child: Container(
+                height: 1000,
+                child: Card(
+                  elevation: 4,
+                  margin: EdgeInsets.all(16),
+                  child: new ListView(
+                    reverse: false,
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    children: <Widget>[
 //            SizedBox(height: 24.0,),
-                  TextFormField(
-                    textCapitalization: TextCapitalization.words,
-                    decoration: InputDecoration(
-                      border: UnderlineInputBorder(),
-                      filled: false,
-                      icon: Icon(Icons.person),
-                      hintText: 'eg- Ankit',
-                      labelText: 'Name ',
+                      TextFormField(
+                        textCapitalization: TextCapitalization.words,
+                        decoration: InputDecoration(
+                          border: UnderlineInputBorder(),
+                          filled: false,
+                          icon: Icon(Icons.person),
+                          hintText: 'eg- Ankit',
+                          labelText: 'Name ',
 
 
-                    ),
-                    maxLength: 50,
-                    onSaved: (val) => item.Name = val,
-                    validator: _validateName,
-                  ),
+                        ),
+                        maxLength: 50,
+                        onSaved: (val) => item.Name = val,
+                        validator: _validateName,
+                      ),
 //            SizedBox(height: 24.0,),
-                  TextFormField(
-                    textCapitalization: TextCapitalization.words,
-                    decoration: InputDecoration(
-                      border: UnderlineInputBorder(),
-                      filled: false,
-                      icon: Icon(Icons.place),
-                      hintText: 'Where is your farm?',
-                      labelText: 'Farm Address',
+                      TextFormField(
+                        textCapitalization: TextCapitalization.words,
+                        decoration: InputDecoration(
+                          border: UnderlineInputBorder(),
+                          filled: false,
+                          icon: Icon(Icons.place),
+                          hintText: 'Where is your farm?',
+                          labelText: 'Farm Address',
 
 
-                    ),
-                    maxLines: 2,
-                    onSaved: (val) => item.Address = val,
-                    validator: _validateName,
-                  ),
+                        ),
+                        maxLines: 2,
+                        onSaved: (val) => item.Address = val,
+                        validator: _validateName,
+                      ),
 //            SizedBox(height: 24.0),
-                  TextFormField(
-                    textCapitalization: TextCapitalization.words,
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      border: UnderlineInputBorder(),
-                      filled: false,
-                      icon: Icon(Icons.place),
-                      hintText: 'eg- 140001',
-                      labelText: 'Pincode ',
+                      TextFormField(
+                        textCapitalization: TextCapitalization.words,
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+                          border: UnderlineInputBorder(),
+                          filled: false,
+                          icon: Icon(Icons.place),
+                          hintText: 'eg- 140001',
+                          labelText: 'Pincode ',
 
 
-                    ),
-                    maxLength: 25,
-                    onSaved: (val) => item.Pincode = val,
-                    validator: (val) => val == "" ? val : null,
-                  ),
+                        ),
+                        maxLength: 25,
+                        onSaved: (val) => item.Pincode = val,
+                        validator: (val) => val == "" ? val : null,
+                      ),
 //            SizedBox(height: 24.0),
-                  TextFormField(
-                    textCapitalization: TextCapitalization.words,
-                    decoration: InputDecoration(
-                      border: UnderlineInputBorder(),
-                      filled: false,
-                      icon: Icon(Icons.person),
-                      hintText: 'eg- rice',
-                      labelText: 'Crop Name ',
+                      TextFormField(
+                        textCapitalization: TextCapitalization.words,
+                        decoration: InputDecoration(
+                          border: UnderlineInputBorder(),
+                          filled: false,
+                          icon: Icon(Icons.person),
+                          hintText: 'eg- rice',
+                          labelText: 'Crop Name ',
 
 
-                    ),
+                        ),
 //              maxLength: 25,
-                    onSaved: (val) => item.CropType = val,
-                    validator: (val) => val == "" ? val : null,
-                  ),
+                        onSaved: (val) => item.CropType = val,
+                        validator: (val) => val == "" ? val : null,
+                      ),
 
 //            SizedBox(height: 24.0),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      border: UnderlineInputBorder(),
-                      filled: false,
-                      icon: Icon(Icons.landscape),
-                      hintText: 'In Acres',
-                      labelText: 'Land Area',
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          filled: false,
+                          icon: Icon(Icons.landscape),
+                          hintText: 'In Acres',
+                          labelText: 'Land Area',
 
-                    ),
+                        ),
 //              maxLength: 5,
-                    keyboardType: TextInputType.phone,
-                    onSaved: (val) => item.LandSize = val,
-                    inputFormatters: <TextInputFormatter>[
-                      WhitelistingTextInputFormatter.digitsOnly,
-                    ],
-                  ),
-                  new Row(children: <Widget>[
-                    new Expanded(
-                        child: SizedBox(
-                          width:2,
-                          child: new TextFormField(
+                        keyboardType: TextInputType.phone,
+                        onSaved: (val) => item.LandSize = val,
+                        inputFormatters: <TextInputFormatter>[
+                          WhitelistingTextInputFormatter.digitsOnly,
+                        ],
+                      ),
+                      new Row(children: <Widget>[
+                        new Expanded(
+                            child: SizedBox(
+                              width:2,
+                              child: new TextFormField(
 
-                            decoration: new InputDecoration(
-                              icon: const Icon(Icons.calendar_today),
-                              hintText: 'When do you want us to come?',
-                              labelText: 'Harvest Date',
-                            ),
+                                decoration: new InputDecoration(
+                                  icon: const Icon(Icons.calendar_today),
+                                  hintText: 'When do you want us to come?',
+                                  labelText: 'Harvest Date',
+                                ),
 
-                            controller: _controller,
-                            keyboardType: TextInputType.datetime,
-                            onSaved: (val) => item.HarvestDate = val,
-                          ),
-                        )),
-                    new IconButton(
-                      icon: new Icon(Icons.calendar_view_day),
-                      tooltip: 'Choose date',
-                      onPressed: (() {
-                        _chooseDate(context, _controller.text);
-                      }),
-                    )
-                  ]),
+                                controller: _controller,
+                                keyboardType: TextInputType.datetime,
+                                onSaved: (val) => item.HarvestDate = val,
+                              ),
+                            )),
+                        new IconButton(
+                          icon: new Icon(Icons.calendar_view_day),
+                          tooltip: 'Choose date',
+                          onPressed: (() {
+                            _chooseDate(context, _controller.text);
+                          }),
+                        )
+                      ]),
 //              new TextFormField(
 //                decoration: const InputDecoration(
 //                  border: UnderlineInputBorder(),
@@ -234,53 +236,59 @@ class NewRequestState extends State<NewRequest>{
 //              ),
 
 //            SizedBox(height: 24.0),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      border: UnderlineInputBorder(),
-                      filled: false,
-                      icon: Icon(Icons.phone),
-                      hintText: 'Your phone no.',
-                      labelText: 'Phone No.',
-                      prefixText: '+91',
-                    ),
-                    maxLength: 10,
-                    keyboardType: TextInputType.phone,
-                    onSaved: (val) => item.Mobile = val,
-                    inputFormatters: <TextInputFormatter>[
-                      WhitelistingTextInputFormatter.digitsOnly,
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          filled: false,
+                          icon: Icon(Icons.phone),
+                          hintText: 'Your phone no.',
+                          labelText: 'Phone No.',
+                          prefixText: '+91',
+                        ),
+                        maxLength: 10,
+                        keyboardType: TextInputType.phone,
+                        onSaved: (val) => item.Mobile = val,
+                        inputFormatters: <TextInputFormatter>[
+                          WhitelistingTextInputFormatter.digitsOnly,
+                        ],
+                      ),
+                      new TextFormField(
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          filled: false,
+                          icon: const Icon(Icons.calendar_today),
+                          hintText: 'If you would like to help us',
+                          labelText: 'Donation',
+                        ),
+                        keyboardType: TextInputType.phone,
+                        onSaved: (val) => item.Donations = val,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: RaisedButton(
+                          onPressed: () {
+                            if (_formKey.currentState.validate()) {
+                              _formKey.currentState.save();
+                              print(item.Name);
+                              savitem=item;
+                              otpnumberpasser(item);
+                            }
+                          },
+                          child: Text('Submit'),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                      ),
                     ],
                   ),
-                  new TextFormField(
-                    decoration: const InputDecoration(
-                      border: UnderlineInputBorder(),
-                      filled: false,
-                      icon: const Icon(Icons.calendar_today),
-                      hintText: 'If you would like to help us',
-                      labelText: 'Donation',
-                    ),
-                    keyboardType: TextInputType.phone,
-                    onSaved: (val) => item.Donations = val,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    child: RaisedButton(
-                      onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          _formKey.currentState.save();
-                          print(item.Name);
-                          savitem=item;
-                          otpnumberpasser(item);
-                        }
-                      },
-                      child: Text('Submit'),
-                    ),
-                  ),
-                ],
+                ),
               ),
+
             ),
           ),
         ),
-      ),
+      ],
     );
 
 
